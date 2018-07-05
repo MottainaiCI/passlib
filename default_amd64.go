@@ -1,5 +1,3 @@
-// +build !amd64
-
 package passlib
 
 import (
@@ -8,6 +6,7 @@ import (
 	"gopkg.in/hlandau/passlib.v1/hash/argon2"
 	"gopkg.in/hlandau/passlib.v1/hash/bcrypt"
 	"gopkg.in/hlandau/passlib.v1/hash/bcryptsha256"
+	"gopkg.in/hlandau/passlib.v1/hash/pbkdf2"
 	"gopkg.in/hlandau/passlib.v1/hash/scrypt"
 	"gopkg.in/hlandau/passlib.v1/hash/sha2crypt"
 	"time"
@@ -34,7 +33,10 @@ var defaultSchemes20160922 = []abstract.Scheme{
 	sha2crypt.Crypter512,
 	sha2crypt.Crypter256,
 	bcryptsha256.Crypter,
+	pbkdf2.SHA512Crypter,
+	pbkdf2.SHA256Crypter,
 	bcrypt.Crypter,
+	pbkdf2.SHA1Crypter,
 }
 
 // Default schemes as of 2018-06-01.
@@ -44,7 +46,10 @@ var defaultSchemes20180601 = []abstract.Scheme{
 	sha2crypt.Crypter512,
 	sha2crypt.Crypter256,
 	bcryptsha256.Crypter,
+	pbkdf2.SHA512Crypter,
+	pbkdf2.SHA256Crypter,
 	bcrypt.Crypter,
+	pbkdf2.SHA1Crypter,
 }
 
 // The default schemes, most preferred first. The first scheme will be used to
